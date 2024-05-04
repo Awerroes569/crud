@@ -1,3 +1,4 @@
+import styles from './styles/temporary.module.scss';
 import { Routes, Route } from 'react-router-dom';
 import Home from './components/pages/Home';
 import PostView from './components/pages/PostView';
@@ -11,7 +12,7 @@ import Footer from './components/views/Footer';
 
 function App() {
   return (
-    <Container>
+    <Container className="min-vh-100">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

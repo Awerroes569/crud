@@ -5,12 +5,12 @@ import { NavLink } from 'react-router-dom';
 const NavBar = () => {
     return (
         
-        <Navbar bg="primary" className="justify-content-between">
-            <Navbar.Brand className="text-light">Blog.app</Navbar.Brand>
+        <Navbar bg="primary" className="mt-4 mb-4 rounded justify-content-between" >
+            <Navbar.Text bg="primary" className="text-light">&nbsp;&nbsp;Blog.app</Navbar.Text>
             
             <Nav>
-                <Nav.Link as={NavLink}  to="/">Home</Nav.Link>
-                <Nav.Link as={NavLink} className="text-light" to="/about">About</Nav.Link>
+                <Nav.Link as={NavLink} className="text-light"  to="/">Home</Nav.Link>
+                <Nav.Link as={NavLink} className="text-light"  to="/about">About</Nav.Link>
             </Nav>
         </Navbar>
         
