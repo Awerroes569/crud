@@ -2,7 +2,7 @@ import {Container, Row, Col} from 'react-bootstrap';
 import { useSelector } from "react-redux";
 import { getAllPosts } from "../../../redux/postRedux";
 import Post from '../Post/Post';
-import shortid from 'shortid';
+
 
 const Posts = () => {
 
@@ -12,7 +12,7 @@ const Posts = () => {
         <Container>
             <Row>
                 {posts.map(post => (
-                    <Col  xs md="6">
+                    <Col xs="12" sm="6" md="4">
                         <Post post={post} />
                     </Col>
                 ))}
