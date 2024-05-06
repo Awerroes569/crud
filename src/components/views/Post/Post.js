@@ -85,6 +85,7 @@ const Post = ({ post }) => {
                 >
                     <Button 
                         variant="primary"
+                        href={'/post/'+post.id}
                     >
                         Read more
                     </Button>

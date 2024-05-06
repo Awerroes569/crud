@@ -1,8 +1,12 @@
 //selectors
 export const getAllPosts = (state) => state.posts;
+export const getPostById = (state, postId) => {
+  return state.posts.find(post => post.id === postId);
+};
 
 // actions
 const createActionName = actionName => `app/posts/${actionName}`;
+
 
 // action creators
 const postsReducer = (statePart = [], action) => {
