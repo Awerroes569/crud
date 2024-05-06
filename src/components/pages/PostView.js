@@ -32,10 +32,23 @@ const PostView = () => {
     else return (
         <Container className="m-1 py-3">
             <Row style={{marginBottom: '1.5rem'}}>
-                <Col xs="12" sm="6" className="mb-2 mb-sm-0" style={{fontSize: '24px', fontWeight: 'bold', padding: 0}}>                
+                <Col
+                    xs="12"
+                    sm="6"
+                    className="mb-2 mb-sm-0"
+                    style={{
+                        fontSize: '24px',
+                        fontWeight: 'bold',
+                        padding: 0
+                    }}
+                >                
                    {post.title}                   
                 </Col>
-                <Col xs="12" sm="6" className="d-flex flex-row justify-content-start">
+                <Col
+                    xs="12"
+                    sm="6"
+                    className="d-flex flex-row justify-content-start"
+                >
                     <Button
                         variant="outline-success"
                     >
@@ -54,12 +67,17 @@ const PostView = () => {
                 style={{marginBottom: '1rem'}}
             >
                 <Col 
-                    xs="12" sm="2"
+                    xs="12"
+                    sm="2"
                     className="mb-2 mb-sm-0 d-flex align-items-center"
                     style={{ textAlign: 'left', padding: 0}}
                 >
                     <p
-                        style={{ fontSize: '18px', fontWeight: 'bold',  margin: 0 }}
+                        style={{
+                            fontSize: '18px',
+                            fontWeight: 'bold',
+                            margin: 0 
+                        }}
                     >
                         Author:
                     </p>
@@ -81,18 +99,24 @@ const PostView = () => {
                 style={{marginBottom: '1rem'}}
             >
                 <Col
-                    xs="12" sm="2"
+                    xs="12"
+                    sm="2"
                     className="d-flex align-items-center mb-2 mb-sm-0"
                     style={{ textAlign: 'left', padding: 0}}
                 >
                     <p
-                        style={{ fontSize: '18px', fontWeight: 'bold',  margin: 0 }}
+                        style={{
+                            fontSize: '18px',
+                            fontWeight: 'bold',
+                            margin: 0 
+                        }}
                     >
                         Published:
                     </p>
                 </Col>
                 <Col
-                    xs="12" sm="10"
+                    xs="12"
+                    sm="10"
                     className="d-flex align-items-center"
                     style={{ textAlign: 'left' }}
                 >
@@ -117,16 +141,31 @@ const PostView = () => {
                 </Col>
             </Row>
 
-            <Modal show={show} onHide={handleClose}>
+            <Modal
+                show={show}
+                onHide={handleClose}
+            >
                 <Modal.Header closeButton>
-                    <Modal.Title>Are you sure?</Modal.Title>
+                    <Modal.Title>
+                        Are you sure?
+                    </Modal.Title>
                 </Modal.Header>
-                <Modal.Body>This operation will completely remove this post from the app. Are you sure you want to do that?</Modal.Body>
+
+                <Modal.Body>
+                    This operation will completely remove this post from the app. Are you sure you want to do that?
+                </Modal.Body>
+
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button
+                        variant="secondary"
+                        onClick={handleClose}
+                    >
                         Cancel
                     </Button>
-                    <Button variant="danger" onClick={handleRemovePost}>
+                    <Button
+                        variant="danger"
+                        onClick={handleRemovePost}
+                    >
                         Remove
                     </Button>
                 </Modal.Footer>
