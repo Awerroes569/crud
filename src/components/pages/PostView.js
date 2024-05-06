@@ -1,26 +1,50 @@
 import { useParams } from 'react-router';
-import { Container, Row, Col, Button } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
 import { getPostById } from '../../redux/postRedux';
+import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import { REMOVE_POST_BY_ID } from '../../redux/postRedux';
+
+
 
 const PostView = () => {
     
     const { id } = useParams();
     const post = useSelector(state=>getPostById(state, id));
 
-    return (
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const removePost = postId => ({
+        type: REMOVE_POST_BY_ID,
+        payload: postId,
+      });
+
+    const dispatch = useDispatch();
+    const handleRemovePost = () => {
+        dispatch(removePost(id));
+      };
+
+    if(!post) return <Navigate to="/" />
+    else return (
         <Container className="m-1 py-3">
             <Row style={{marginBottom: '1.5rem'}}>
                 <Col xs="12" sm="6" className="mb-2 mb-sm-0" style={{fontSize: '24px', fontWeight: 'bold', padding: 0}}>                
                    {post.title}                   
                 </Col>
                 <Col xs="12" sm="6" className="d-flex flex-row justify-content-start">
-                    <Button variant="outline-success">
+                    <Button
+                        variant="outline-success"
+                    >
                         Edit
                     </Button>
                     <Button
                         variant="outline-danger"
                         className="ms-2"
+                        onClick={handleShow}
                     >
                         Delete
                     </Button>
@@ -92,6 +116,21 @@ const PostView = () => {
                     </p>
                 </Col>
             </Row>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Are you sure?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>This operation will completely remove this post from the app. Are you sure you want to do that?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Cancel
+                    </Button>
+                    <Button variant="danger" onClick={handleRemovePost}>
+                        Remove
+                    </Button>
+                </Modal.Footer>
+            </Modal>
 
         </Container>
     )
