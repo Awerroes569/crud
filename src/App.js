@@ -9,6 +9,7 @@ import Wrong from './components/pages/Wrong';
 import { Container } from 'react-bootstrap';
 import Header from './components/views/Header';
 import Footer from './components/views/Footer';
+import PostAdd from './components/pages/PostAdd';
 
 function App() {
   return (
@@ -17,9 +18,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/post/:id" element={<PostView />} />
-        <Route path="/add" element={<Add />} />
         <Route path="/post/edit/:id" element={<PostEdit />} />
         <Route path="/about" element={<About />} />
+        <Route path="/add" element={<PostAdd />} />
         <Route path="*" element={<Wrong />} />
       </Routes>
       <Footer /> 
