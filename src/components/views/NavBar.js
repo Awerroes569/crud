@@ -9,8 +9,18 @@ const NavBar = () => {
             <Navbar.Text bg="primary" className="text-light">&nbsp;&nbsp;Blog.app</Navbar.Text>
             
             <Nav>
-                <Nav.Link as={NavLink} className="text-light"  to="/">Home</Nav.Link>
-                <Nav.Link as={NavLink} className="text-light"  to="/about">About</Nav.Link>
+                <NavLink
+                    className={({ isActive }) => [  isActive ? styles.active : styles.inactive].join(' ')}
+                    to="/"
+                >
+                    Home
+                </NavLink>
+                <NavLink
+                    className={({ isActive }) => [  isActive ? styles.active : styles.inactive].join(' ')}
+                    to="/about"
+                >
+                    About
+                </NavLink>
             </Nav>
         </Navbar>
         

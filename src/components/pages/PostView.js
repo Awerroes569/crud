@@ -3,7 +3,7 @@ import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { getPostById } from '../../redux/postRedux';
 import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { REMOVE_POST_BY_ID } from '../../redux/postRedux';
 
 
@@ -28,6 +28,11 @@ const PostView = () => {
         dispatch(removePost(id));
       };
 
+    const navigate = useNavigate();
+    const path="/post/edit/"+id;
+
+    const handleEdit = () => navigate(path);
+
     if(!post) return <Navigate to="/" />
     else return (
         <Container className="m-1 py-3">
@@ -51,6 +56,7 @@ const PostView = () => {
                 >
                     <Button
                         variant="outline-success"
+                        onClick={handleEdit}
                     >
                         Edit
                     </Button>

@@ -5,32 +5,45 @@ import { useDispatch } from 'react-redux';
 import { ADD_POST } from "../../../redux/postRedux";
 import { useNavigate } from 'react-router-dom';
 
+//action, actionText oraz (potencjalnie) również parametry 
+//ze startowymi wartościami dla pól formularza (title, author itd.). 
+//Podkreślamy “opcjonalnie”, gdyż o ile action i actionText
 
-const AddPostForm = () => {
+const PostForm = (props) => {
+    /*
+    action,
+    actionText,
+    titleForm='',
+    authorForm='',
+    publishedForm=getCurrentDate(),
+    descriptionForm='',
+    contentForm=''
+    */
 
-    const [title, setTitle] = useState('');
-    const [author, setAuthor] = useState('');
-    const [published, setPublished] = useState(getCurrentDate());
-    const [description, setDescription] = useState('');
-    const [content, setContent] = useState('');
+    const [title, setTitle] = useState(props.titleForm?props.titleForm:'' );
+    const [author, setAuthor] = useState(props.authorForm?props.authorForm:'' );
+    const [published, setPublished] = useState(props.publishedForm?props.publishedForm:getCurrentDate() );
+    const [description, setDescription] = useState(props.descriptionForm?props.descriptionForm:'' );
+    const [content, setContent] = useState(props.contentForm?props.contentForm:'' );   
+    const [id, setId] = useState(props.id?props.id:'' ); 
     
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const addPost = () => ({
-        type: ADD_POST,
+    const toDo = () => ({
+        type: props.action,
         payload: {
             title: title,
             shortDescription: description,
             content: content,
             publishedDate: published,
             author: author,
+            id: id,
         },
       });
 
-    const handleAddPost = () => {
-        dispatch(addPost());
+    const handleClick = () => {
+        dispatch(toDo());
         setTitle('');
         setAuthor('');
         setPublished(getCurrentDate());
@@ -118,12 +131,12 @@ const AddPostForm = () => {
             <Button
                 variant="primary"
                 type="submit"
-                onClick={handleAddPost}
+                onClick={handleClick}
             >
-                Add post
+                {props.actionText}
             </Button>
         </Form>
     );
 };
 
-export default AddPostForm;
+export default PostForm;

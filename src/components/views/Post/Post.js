@@ -1,5 +1,6 @@
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import styles from './Post.module.scss';
+import { NavLink } from 'react-router-dom';
 
 
 const Post = ({ post }) => {
@@ -85,7 +86,8 @@ const Post = ({ post }) => {
                 >
                     <Button 
                         variant="primary"
-                        href={'/post/'+post.id}
+                        as={NavLink}
+                        to={'/post/'+post.id}
                     >
                         Read more
                     </Button>

@@ -11,6 +11,7 @@ const createActionName = actionName => `app/posts/${actionName}`;
 
 export const REMOVE_POST_BY_ID = createActionName('REMOVE_POST_BY_ID');
 export const ADD_POST = createActionName('ADD_POST');
+export const EDIT_POST = createActionName('EDIT_POST');
 
 
 // action creators
@@ -19,9 +20,13 @@ const postsReducer = (statePart = [], action) => {
     case REMOVE_POST_BY_ID:
         return statePart.filter(item => item.id !== action.payload);
     case ADD_POST:
-      console.log('REDUCER Adding post');
-      console.log(action.payload);
       return [...statePart, { ...action.payload, id: shortid() }];
+    case EDIT_POST:
+      //console.log('REDUCER Editing post');
+      //console.log(typeof(action.payload.id));
+      //console.log('after removing',[...statePart.filter(item => item.id !== action.payload.id), { ...action.payload }]);
+      //debugger;
+      return [...statePart.filter(item => item.id !== action.payload.id), { ...action.payload }];
     default:
       return statePart;
   };
