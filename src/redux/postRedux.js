@@ -22,10 +22,6 @@ const postsReducer = (statePart = [], action) => {
     case ADD_POST:
       return [...statePart, { ...action.payload, id: shortid() }];
     case EDIT_POST:
-      //console.log('REDUCER Editing post');
-      //console.log(typeof(action.payload.id));
-      //console.log('after removing',[...statePart.filter(item => item.id !== action.payload.id), { ...action.payload }]);
-      //debugger;
       return [...statePart.filter(item => item.id !== action.payload.id), { ...action.payload }];
     default:
       return statePart;
