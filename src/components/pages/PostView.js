@@ -141,9 +141,8 @@ const PostView = () => {
                 >
                     <p
                         style={{ fontSize: '18px', margin: 0}}
-                    >
-                        {post.content}
-                    </p>
+                        dangerouslySetInnerHTML={{ __html: post.content }} 
+                    />
                 </Col>
             </Row>
 
