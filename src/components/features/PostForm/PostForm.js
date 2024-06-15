@@ -1,9 +1,14 @@
-import { Form, Button } from "react-bootstrap";
-import { useState } from "react";
+import { Form, Button, Container } from "react-bootstrap";
+import { useState, useRef} from "react";
 import { getCurrentDate } from "../../common/utils";
 import { useDispatch } from 'react-redux';
 import { ADD_POST } from "../../../redux/postRedux";
 import { useNavigate } from 'react-router-dom';
+import Editor from "../Editor/Editor";
+import Quill from "quill";
+import styles from './PostForm.module.scss'; 
+import 'quill/dist/quill.snow.css';
+import { Delta } from "quill/core";
 
 //action, actionText oraz (potencjalnie) również parametry 
 //ze startowymi wartościami dla pól formularza (title, author itd.). 
@@ -30,6 +35,19 @@ const PostForm = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const quillRef = useRef();
+
+    const handleGetFormattedText = () => {
+        //console.log('keys:', quillRef.current.keys());
+        if (quillRef.current) {
+          const formattedText = quillRef.current.getFormattedText();
+          console.log('Formatted Text:', formattedText);
+          setContent(formattedText);
+        }
+      };
+
+    
+
     const toDo = () => ({
         type: props.action,
         payload: {
@@ -53,6 +71,7 @@ const PostForm = (props) => {
       };
 
     return (
+        
         <Form >
             <Form.Group
                 className="mb-3" 
@@ -120,14 +139,18 @@ const PostForm = (props) => {
                 <Form.Label>
                     Main content
                 </Form.Label>
-                <Form.Control
-                    type="text"
-                    placeholder="Enter main content of the post"
-                    onChange={e=>setContent(e.target.value)}
-                    value={content}
-                />
-            </Form.Group>
-   
+                
+                    <Editor
+                        class="fs-1"
+                        ref={quillRef}
+                        readOnly={false}
+                        
+                        onSelectionChange={handleGetFormattedText}
+                        onTextChange={handleGetFormattedText}
+                    />
+                
+            </Form.Group> 
+            
             <Button
                 variant="primary"
                 type="submit"
@@ -136,6 +159,8 @@ const PostForm = (props) => {
                 {props.actionText}
             </Button>
         </Form>
+        
+        
     );
 };
 
