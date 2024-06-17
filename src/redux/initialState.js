@@ -32,7 +32,8 @@ const initialState = {
             publishedDate: new Date('02-02-2022'),
             author: 'Ringo Starr'
         },
-    ],  
+    ],
+    cathegories: ["Sport","News","Music"],  
 };
     
 export default initialState;

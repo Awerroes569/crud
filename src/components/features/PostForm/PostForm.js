@@ -1,7 +1,7 @@
 import { Form, Button, Container } from "react-bootstrap";
 import { useState, useRef} from "react";
 import { getCurrentDate } from "../../common/utils";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ADD_POST } from "../../../redux/postRedux";
 import { useNavigate } from 'react-router-dom';
 import Editor from "../Editor/Editor";
@@ -12,6 +12,7 @@ import { Delta } from "quill/core";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from "react-hook-form";
+import { getAllCathegories } from "../../../redux/cathegoryRedux";  
 
 //action, actionText oraz (potencjalnie) również parametry 
 //ze startowymi wartościami dla pól formularza (title, author itd.). 
@@ -26,7 +27,8 @@ const PostForm = (props) => {
     const [content, setContent] = useState(props.contentForm?props.contentForm:'' );   
     const [id, setId] = useState(props.id?props.id:'' );
     const [contentError, setContentError] = useState(false);
-    const [dateError, setDateError] = useState(false); 
+    const [dateError, setDateError] = useState(false);
+    const [cathegories, setCathegories] = useState([...useSelector(state=>getAllCathegories(state))]);
     
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -44,7 +46,7 @@ const PostForm = (props) => {
         }
       };
 
-    
+    console.log('cathegories:', cathegories);
 
     const toDo = () => ({
         type: props.action,
@@ -234,7 +236,23 @@ const PostForm = (props) => {
                     </small>
                 }
                 
-            </Form.Group> 
+            </Form.Group>
+
+            <Form.Group>
+                <Form.Label>
+                    Cathegory: 
+                </Form.Label> 
+                <br/>
+                <select>
+                    {
+                        cathegories.map((cathegory) =>
+                        <option key={cathegory} value={cathegory}>{cathegory}</option>
+                        )
+                    }   
+                </select>
+                <br/>
+                <br/>
+            </Form.Group>
             
             <Button
                 variant="primary"
