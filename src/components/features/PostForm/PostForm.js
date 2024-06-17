@@ -10,23 +10,14 @@ import styles from './PostForm.module.scss';
 import 'quill/dist/quill.snow.css';
 import { Delta } from "quill/core";
 import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
+import { useForm } from "react-hook-form";
 
 //action, actionText oraz (potencjalnie) również parametry 
 //ze startowymi wartościami dla pól formularza (title, author itd.). 
 //Podkreślamy “opcjonalnie”, gdyż o ile action i actionText
 
 const PostForm = (props) => {
-    /*
-    action,
-    actionText,
-    titleForm='',
-    authorForm='',
-    publishedForm=getCurrentDate(),
-    descriptionForm='',
-    contentForm=''
-    */
 
     const [title, setTitle] = useState(props.titleForm?props.titleForm:'' );
     const [author, setAuthor] = useState(props.authorForm?props.authorForm:'' );
@@ -39,6 +30,8 @@ const PostForm = (props) => {
     const navigate = useNavigate();
 
     const quillRef = useRef();
+
+    const { register, handleSubmit: validate, formState: { errors } } = useForm();
 
     const handleGetFormattedText = () => {
         //console.log('keys:', quillRef.current.keys());
@@ -84,11 +77,30 @@ const PostForm = (props) => {
                     Title
                 </Form.Label>
                 <Form.Control
+                    {...register('title', {
+                        required: 'Author is required',
+                        minLength: {
+                          value: 4,
+                          message: 'Author must be at least 4 characters long'
+                        }
+                      })}
                     type="text"
                     placeholder="Enter title of the post"
                     onChange={e=>setTitle(e.target.value)}
                     value={title}
                 />
+                {errors.title && 
+                    <small
+                        className="
+                            d-block
+                            form-text
+                            text-danger
+                            mt-2"
+                    >
+                        {errors.title.message}
+                    </small>
+                }
+                
             </Form.Group>
 
             <Form.Group
@@ -156,7 +168,7 @@ const PostForm = (props) => {
             <Button
                 variant="primary"
                 type="submit"
-                onClick={handleClick}
+                onClick={validate(handleClick)}
             >
                 {props.actionText}
             </Button>
