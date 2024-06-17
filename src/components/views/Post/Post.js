@@ -63,7 +63,7 @@ const Post = ({ post }) => {
                     <p
                         style={{ fontSize: '14px', margin: 0}}
                     >
-                        {post.publishedDate}
+                        {post.publishedDate.toLocaleDateString()}
                     </p>
                 </Col>
             </Row>

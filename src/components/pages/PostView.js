@@ -129,7 +129,7 @@ const PostView = () => {
                     <p
                         style={{ fontSize: '16px', margin: 0}}
                     >
-                        {post.publishedDate}
+                        {post.publishedDate.toLocaleDateString()}
                     </p>
                 </Col>
             </Row>

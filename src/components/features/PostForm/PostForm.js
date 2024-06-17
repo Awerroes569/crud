@@ -9,6 +9,9 @@ import Quill from "quill";
 import styles from './PostForm.module.scss'; 
 import 'quill/dist/quill.snow.css';
 import { Delta } from "quill/core";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 //action, actionText oraz (potencjalnie) również parametry 
 //ze startowymi wartościami dla pól formularza (title, author itd.). 
@@ -27,7 +30,7 @@ const PostForm = (props) => {
 
     const [title, setTitle] = useState(props.titleForm?props.titleForm:'' );
     const [author, setAuthor] = useState(props.authorForm?props.authorForm:'' );
-    const [published, setPublished] = useState(props.publishedForm?props.publishedForm:getCurrentDate() );
+    const [published, setPublished] = useState(props.publishedForm?props.publishedForm: new Date() );
     const [description, setDescription] = useState(props.descriptionForm?props.descriptionForm:'' );
     const [content, setContent] = useState(props.contentForm?props.contentForm:'' );   
     const [id, setId] = useState(props.id?props.id:'' ); 
@@ -110,11 +113,10 @@ const PostForm = (props) => {
                 <Form.Label>
                     Published
                 </Form.Label>
-                <Form.Control
-                    type="date"
-                    placeholder="Enter date of the post"
-                    onChange={e=>setPublished(e.target.value)} 
-                />
+                <br/>
+                <DatePicker
+                    selected={published}
+                    onChange={(date) => {console.log(typeof date, date);setPublished(date)}} />
             </Form.Group>
 
             <Form.Group
