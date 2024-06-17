@@ -24,7 +24,9 @@ const PostForm = (props) => {
     const [published, setPublished] = useState(props.publishedForm?props.publishedForm: new Date() );
     const [description, setDescription] = useState(props.descriptionForm?props.descriptionForm:'' );
     const [content, setContent] = useState(props.contentForm?props.contentForm:'' );   
-    const [id, setId] = useState(props.id?props.id:'' ); 
+    const [id, setId] = useState(props.id?props.id:'' );
+    const [contentError, setContentError] = useState(false);
+    const [dateError, setDateError] = useState(false); 
     
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -57,6 +59,14 @@ const PostForm = (props) => {
       });
 
     const handleClick = () => {
+        setContentError(!content);
+        setDateError(!published);
+        if(content && published) {
+            handleSubmit();
+        }
+    };
+
+    const handleSubmit = () => {
         dispatch(toDo());
         setTitle('');
         setAuthor('');
@@ -149,6 +159,17 @@ const PostForm = (props) => {
                 <DatePicker
                     selected={published}
                     onChange={(date) => {console.log(typeof date, date);setPublished(date)}} />
+                {dateError && 
+                    <small
+                        className="
+                            d-block
+                            form-text
+                            text-danger
+                            mt-2"
+                    >
+                        Date is required
+                    </small>
+                }
             </Form.Group>
 
             <Form.Group
@@ -201,6 +222,17 @@ const PostForm = (props) => {
                         onSelectionChange={handleGetFormattedText}
                         onTextChange={handleGetFormattedText}
                     />
+                    {contentError && 
+                    <small
+                        className="
+                            d-block
+                            form-text
+                            text-danger
+                            mt-2"
+                    >
+                        Content can not be empty
+                    </small>
+                }
                 
             </Form.Group> 
             
