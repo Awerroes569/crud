@@ -6,7 +6,8 @@ const initialState = {
             shortDescription: 'Short description of the article...',
             content: 'Main content of the article',
             publishedDate: new Date('02-02-2022'),
-            author: 'John Doe'
+            author: 'John Doe',
+            category: 'Sport'
         },
         {
             id: '2',
@@ -14,7 +15,8 @@ const initialState = {
             shortDescription: 'Short description of the article...',
             content: 'Main content of the article',
             publishedDate: new Date('02-02-2022'),
-            author: 'John Lennon'
+            author: 'John Lennon',
+            category: 'News'
         },
         {
             id: '3',
@@ -22,7 +24,8 @@ const initialState = {
             shortDescription: 'Short description of the article...',
             content: 'Main content of the article',
             publishedDate: new Date('02-02-2022'),
-            author: 'George Harrison'
+            author: 'George Harrison',
+            category: 'Music'
         },
         {
             id: '4',
@@ -30,10 +33,11 @@ const initialState = {
             shortDescription: 'Short description of the article...',
             content: 'Main content of the article',
             publishedDate: new Date('02-02-2022'),
-            author: 'Ringo Starr'
+            author: 'Ringo Starr',
+            category: 'Music'
         },
     ],
-    cathegories: ["Sport","News","Music"],  
+    categories: ["Sport","News","Music"],  
 };
     
 export default initialState;

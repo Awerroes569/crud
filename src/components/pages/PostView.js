@@ -133,6 +133,37 @@ const PostView = () => {
                     </p>
                 </Col>
             </Row>
+            <Row 
+                style={{marginBottom: '1rem'}}
+            >
+                <Col 
+                    xs="12"
+                    sm="2"
+                    className="d-flex align-items-center mb-2 mb-sm-0"
+                    style={{ textAlign: 'left', padding: 0}}
+                >
+                    <p
+                        style={{ 
+                            fontSize: '18px',
+                            fontWeight: 'bold',
+                            margin: 0 }}
+                    >
+                        Category:
+                    </p>
+                </Col>
+                <Col
+                    xs="12"
+                    sm="10"
+                    className="d-flex align-items-center"
+                    style={{ textAlign: 'left' }}
+                >
+                    <p
+                        style={{ fontSize: '16px', margin: 0}}
+                    >
+                        {post.category}
+                    </p>
+                </Col>
+            </Row>
             <Row
                 style={{marginBottom: '1rem'}}
             >

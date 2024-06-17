@@ -13,14 +13,15 @@ const PostEdit = () => {
         <div>
             <h1>Change post and save</h1>
             <PostForm
-                 action={EDIT_POST}
-                 actionText={'Save changes'}
-                 titleForm={post.title?post.title:''}
-                 authorForm={post.author?post.author:''}
-                 publishedForm={post.publishedDate?post.publishedDate:''}
-                 descriptionForm={post.shortDescription?post.shortDescription:''}
-                 contentForm={post.content?post.content:''}
-                 id={post.id}
+                action={EDIT_POST}
+                actionText={'Save changes'}
+                titleForm={post.title?post.title:''}
+                authorForm={post.author?post.author:''}
+                publishedForm={post.publishedDate?post.publishedDate:''}
+                categoryForm={post.category?post.category:''}
+                descriptionForm={post.shortDescription?post.shortDescription:''}
+                contentForm={post.content?post.content:''}
+                id={post.id}
             />
         </div>
     )

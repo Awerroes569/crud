@@ -12,7 +12,7 @@ import { Delta } from "quill/core";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from "react-hook-form";
-import { getAllCathegories } from "../../../redux/cathegoryRedux";  
+import { getAllCategories } from "../../../redux/categoryRedux";  
 
 //action, actionText oraz (potencjalnie) również parametry 
 //ze startowymi wartościami dla pól formularza (title, author itd.). 
@@ -23,12 +23,13 @@ const PostForm = (props) => {
     const [title, setTitle] = useState(props.titleForm?props.titleForm:'' );
     const [author, setAuthor] = useState(props.authorForm?props.authorForm:'' );
     const [published, setPublished] = useState(props.publishedForm?props.publishedForm: new Date() );
+    const [category, setCategory] = useState(props.categoryForm?props.categoryForm:'' );
     const [description, setDescription] = useState(props.descriptionForm?props.descriptionForm:'' );
     const [content, setContent] = useState(props.contentForm?props.contentForm:'' );   
     const [id, setId] = useState(props.id?props.id:'' );
     const [contentError, setContentError] = useState(false);
     const [dateError, setDateError] = useState(false);
-    const [cathegories, setCathegories] = useState([...useSelector(state=>getAllCathegories(state))]);
+    const [categories, setCategories] = useState([...useSelector(state=>getAllCategories(state))]);
     
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -46,7 +47,6 @@ const PostForm = (props) => {
         }
       };
 
-    console.log('cathegories:', cathegories);
 
     const toDo = () => ({
         type: props.action,
@@ -55,6 +55,7 @@ const PostForm = (props) => {
             shortDescription: description,
             content: content,
             publishedDate: published,
+            category: category,
             author: author,
             id: id,
         },
@@ -77,6 +78,11 @@ const PostForm = (props) => {
         setContent('');
         navigate('/');
       };
+
+    const handleCategoryChange = (e) => {
+        e.preventDefault();
+        setCategory(e.target.value);
+    }
 
     return (
         
@@ -219,8 +225,7 @@ const PostForm = (props) => {
                     <Editor
                         class="fs-1"
                         ref={quillRef}
-                        readOnly={false}
-                        
+                        readOnly={false}  
                         onSelectionChange={handleGetFormattedText}
                         onTextChange={handleGetFormattedText}
                     />
@@ -240,13 +245,14 @@ const PostForm = (props) => {
 
             <Form.Group>
                 <Form.Label>
-                    Cathegory: 
+                    Category: 
                 </Form.Label> 
                 <br/>
-                <select>
+                <select id="select" value={category} onChange={handleCategoryChange}>
+                    <option value="">--Please choose a category--</option>
                     {
-                        cathegories.map((cathegory) =>
-                        <option key={cathegory} value={cathegory}>{cathegory}</option>
+                        categories.map((category) =>
+                        <option key={category} value={category}>{category}</option>
                         )
                     }   
                 </select>

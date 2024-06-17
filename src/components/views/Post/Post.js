@@ -15,6 +15,7 @@ const Post = ({ post }) => {
                     </p>
                 </Col>
             </Row>
+            
             <Row 
                 style={{marginBottom: '1rem'}}
             >
@@ -64,6 +65,32 @@ const Post = ({ post }) => {
                         style={{ fontSize: '14px', margin: 0}}
                     >
                         {post.publishedDate.toLocaleDateString()}
+                    </p>
+                </Col>
+            </Row>
+            <Row 
+                style={{marginBottom: '1rem'}}
+            >
+                <Col 
+                    xs="4"
+                    className="d-flex align-items-center"
+                    style={{ textAlign: 'left', padding: 0}}
+                >
+                    <p
+                        style={{ fontSize: '16px', fontWeight: 'bold',  margin: 0 }}
+                    >
+                        Category:
+                    </p>
+                </Col>
+                <Col
+                    xs="8"
+                    className="d-flex align-items-center"
+                    style={{ textAlign: 'left' }}
+                >
+                    <p
+                        style={{ fontSize: '14px', margin: 0}}
+                    >
+                        {post.category}
                     </p>
                 </Col>
             </Row>
