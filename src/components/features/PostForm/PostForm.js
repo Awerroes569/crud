@@ -78,12 +78,13 @@ const PostForm = (props) => {
                 </Form.Label>
                 <Form.Control
                     {...register('title', {
-                        required: 'Author is required',
+                        required: 'Title is required',
                         minLength: {
                           value: 4,
-                          message: 'Author must be at least 4 characters long'
+                          message: 'Title must be at least 4 characters long'
                         }
-                      })}
+                      })
+                    }
                     type="text"
                     placeholder="Enter title of the post"
                     onChange={e=>setTitle(e.target.value)}
@@ -111,11 +112,30 @@ const PostForm = (props) => {
                     Author
                 </Form.Label>
                 <Form.Control
+                    {...register('author', {
+                        required: 'Author is required',
+                        minLength: {
+                        value: 4,
+                        message: 'Author must be at least 4 characters long'
+                        }
+                    })
+                    }
                     type="text"
                     placeholder="Enter author of the post"
                     onChange={e=>setAuthor(e.target.value)}
                     value={author}
                 />
+                {errors.author && 
+                    <small
+                        className="
+                            d-block
+                            form-text
+                            text-danger
+                            mt-2"
+                    >
+                        {errors.author.message}
+                    </small>
+                }
             </Form.Group>
 
             <Form.Group
@@ -139,11 +159,30 @@ const PostForm = (props) => {
                     Short description
                 </Form.Label>
                 <Form.Control
+                    {...register('description', {
+                        required: 'Description is required',
+                        minLength: {
+                        value: 30,
+                        message: 'Description must be at least 30 characters long'
+                        }
+                    })
+                    }
                     type="text"
                     placeholder="Enter short description of the post"
                     onChange={e=>setDescription(e.target.value)}
                     value={description}
                 />
+                {errors.description && 
+                    <small
+                        className="
+                            d-block
+                            form-text
+                            text-danger
+                            mt-2"
+                    >
+                        {errors.description.message}
+                    </small>
+                }
             </Form.Group>
 
             <Form.Group
