@@ -1,18 +1,25 @@
 import { Container } from "react-bootstrap";
-import { ADD_POST } from "../../redux/postRedux.js";
-import PostForm from "../features/PostForm/PostForm.js";
+import { useParams } from 'react-router';
+import { useSelector } from 'react-redux'
+import { getAllByCategory } from '../../redux/postRedux';
+import Post from '../views/Post/Post';
 
 
-const PostAdd = () => {
+const Category = () => {
 
-  const action = ADD_POST;
+    const category = 'Music';
 
-  return (
+    const categoryPosts = useSelector(state=>getAllByCategory(state, category));
+
+    return (
     <Container>
-      <h1>Add post</h1> 
-      <PostForm action={action} actionText={'Add post'} />
+        <h1>Category: {category}</h1>
+        {categoryPosts.map(post => (
+            <Post post={post} />
+        ))}
+        
     </Container>
-  );
+    );
 }
 
-export default PostAdd;
+export default Category;

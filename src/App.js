@@ -10,6 +10,7 @@ import { Container } from 'react-bootstrap';
 import Header from './components/views/Header';
 import Footer from './components/views/Footer';
 import PostAdd from './components/pages/PostAdd';
+import Category from './components/pages/Category';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/post/edit/:id" element={<PostEdit />} />
         <Route path="/about" element={<About />} />
         <Route path="/add" element={<PostAdd />} />
+        <Route path="/category" element={<Category />} />
         <Route path="*" element={<Wrong />} />
       </Routes>
       <Footer /> 

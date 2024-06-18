@@ -17,6 +17,12 @@ const NavBar = () => {
                 </NavLink>
                 <NavLink
                     className={({ isActive }) => [  isActive ? styles.active : styles.inactive].join(' ')}
+                    to="/categories"
+                >
+                    Categories
+                </NavLink>
+                <NavLink
+                    className={({ isActive }) => [  isActive ? styles.active : styles.inactive].join(' ')}
                     to="/about"
                 >
                     About
