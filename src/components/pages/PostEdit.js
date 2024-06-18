@@ -11,7 +11,9 @@ const PostEdit = () => {
 
     return (
         <div>
-            <h1>Change post and save</h1>
+            <h1>
+                Change post and save
+            </h1>
             <PostForm
                 action={EDIT_POST}
                 actionText={'Save changes'}

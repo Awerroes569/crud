@@ -14,7 +14,6 @@ export const REMOVE_POST_BY_ID = createActionName('REMOVE_POST_BY_ID');
 export const ADD_POST = createActionName('ADD_POST');
 export const EDIT_POST = createActionName('EDIT_POST');
 
-
 // action creators
 const postsReducer = (statePart = [], action) => {
   switch (action.type) {

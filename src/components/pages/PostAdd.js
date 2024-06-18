@@ -9,8 +9,13 @@ const PostAdd = () => {
 
   return (
     <Container>
-      <h1>Add post</h1> 
-      <PostForm action={action} actionText={'Add post'} />
+      <h1>
+        Add post
+      </h1> 
+      <PostForm
+        action={action}
+        actionText={'Add post'}
+      />
     </Container>
   );
 }

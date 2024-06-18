@@ -1,22 +1,14 @@
-import { Form, Button, Container } from "react-bootstrap";
-import { useState, useRef} from "react";
+import { Form, Button } from "react-bootstrap";
+import { useState, useRef}  from "react";
 import { getCurrentDate } from "../../common/utils";
 import { useDispatch, useSelector } from 'react-redux';
-import { ADD_POST } from "../../../redux/postRedux";
 import { useNavigate } from 'react-router-dom';
 import Editor from "../Editor/Editor";
-import Quill from "quill";
-import styles from './PostForm.module.scss'; 
 import 'quill/dist/quill.snow.css';
-import { Delta } from "quill/core";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from "react-hook-form";
 import { getAllCategories } from "../../../redux/categoryRedux";  
-
-//action, actionText oraz (potencjalnie) również parametry 
-//ze startowymi wartościami dla pól formularza (title, author itd.). 
-//Podkreślamy “opcjonalnie”, gdyż o ile action i actionText
 
 const PostForm = (props) => {
 
@@ -39,10 +31,8 @@ const PostForm = (props) => {
     const { register, handleSubmit: validate, formState: { errors } } = useForm();
 
     const handleGetFormattedText = () => {
-        //console.log('keys:', quillRef.current.keys());
         if (quillRef.current) {
           const formattedText = quillRef.current.getFormattedText();
-          console.log('Formatted Text:', formattedText);
           setContent(formattedText);
         }
       };
@@ -166,8 +156,10 @@ const PostForm = (props) => {
                 <br/>
                 <DatePicker
                     selected={published}
-                    onChange={(date) => {console.log(typeof date, date);setPublished(date)}} />
-                {dateError && 
+                    onChange={(date) => {setPublished(date)}} />
+                {
+                    dateError
+                    && 
                     <small
                         className="
                             d-block
@@ -201,7 +193,9 @@ const PostForm = (props) => {
                     onChange={e=>setDescription(e.target.value)}
                     value={description}
                 />
-                {errors.description && 
+                {
+                    errors.description
+                    && 
                     <small
                         className="
                             d-block
@@ -229,17 +223,19 @@ const PostForm = (props) => {
                         onSelectionChange={handleGetFormattedText}
                         onTextChange={handleGetFormattedText}
                     />
-                    {contentError && 
-                    <small
-                        className="
-                            d-block
-                            form-text
-                            text-danger
-                            mt-2"
-                    >
-                        Content can not be empty
-                    </small>
-                }
+                    {
+                        contentError
+                        && 
+                        <small
+                            className="
+                                d-block
+                                form-text
+                                text-danger
+                                mt-2"
+                        >
+                            Content can not be empty
+                        </small>
+                    }
                 
             </Form.Group>
 
@@ -248,11 +244,22 @@ const PostForm = (props) => {
                     Category: 
                 </Form.Label> 
                 <br/>
-                <select id="select" value={category} onChange={handleCategoryChange}>
-                    <option value="">--Please choose a category--</option>
+                <select
+                    id="select"
+                    value={category}
+                    onChange={handleCategoryChange}
+                >
+                    <option value="">
+                        --Please choose a category--
+                    </option>
                     {
                         categories.map((category) =>
-                        <option key={category} value={category}>{category}</option>
+                        <option
+                            key={category}
+                            value={category}
+                        >
+                            {category}
+                        </option>
                         )
                     }   
                 </select>

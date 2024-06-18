@@ -75,7 +75,12 @@ const PostView = () => {
                 <Col 
                     xs="12"
                     sm="2"
-                    className="mb-2 mb-sm-0 d-flex align-items-center"
+                    className="
+                        mb-2
+                        mb-sm-0
+                        d-flex
+                        align-items-center
+                    "
                     style={{ textAlign: 'left', padding: 0}}
                 >
                     <p
@@ -91,7 +96,10 @@ const PostView = () => {
                 <Col
                     xs="12"
                     sm="10"
-                    className="d-flex align-items-center"
+                    className="
+                        d-flex
+                        align-items-center
+                    "
                     style={{ textAlign: 'left' }}
                 >
                     <p
@@ -107,7 +115,12 @@ const PostView = () => {
                 <Col
                     xs="12"
                     sm="2"
-                    className="d-flex align-items-center mb-2 mb-sm-0"
+                    className="
+                        d-flex
+                        align-items-center
+                        mb-2
+                        mb-sm-0
+                    "
                     style={{ textAlign: 'left', padding: 0}}
                 >
                     <p
@@ -123,7 +136,10 @@ const PostView = () => {
                 <Col
                     xs="12"
                     sm="10"
-                    className="d-flex align-items-center"
+                    className="
+                        d-flex 
+                        align-items-center
+                    "
                     style={{ textAlign: 'left' }}
                 >
                     <p
@@ -139,7 +155,12 @@ const PostView = () => {
                 <Col 
                     xs="12"
                     sm="2"
-                    className="d-flex align-items-center mb-2 mb-sm-0"
+                    className="
+                        d-flex
+                        align-items-center
+                        mb-2
+                        mb-sm-0
+                    "
                     style={{ textAlign: 'left', padding: 0}}
                 >
                     <p
@@ -154,7 +175,10 @@ const PostView = () => {
                 <Col
                     xs="12"
                     sm="10"
-                    className="d-flex align-items-center"
+                    className="
+                        d-flex
+                        align-items-center
+                    "
                     style={{ textAlign: 'left' }}
                 >
                     <p

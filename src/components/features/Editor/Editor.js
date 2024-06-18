@@ -1,7 +1,6 @@
 import React, { forwardRef, useEffect, useLayoutEffect, useRef } from 'react';
 import Quill from 'quill';
 
-// Editor is an uncontrolled React component
 const Editor = 
 forwardRef(
   ({ readOnly, defaultValue, onTextChange, onSelectionChange }, ref) => {
@@ -42,7 +41,6 @@ forwardRef(
         onSelectionChangeRef.current?.(...args);
       });
 
-      // Extend ref with a method to get formatted text
       ref.current.getFormattedText = () => quill.root.innerHTML;
 
       return () => {

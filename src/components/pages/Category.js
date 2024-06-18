@@ -4,16 +4,17 @@ import { useSelector } from 'react-redux'
 import { getAllByCategory } from '../../redux/postRedux';
 import Post from '../views/Post/Post';
 
-
 const Category = () => {
 
-    const category = 'Music';
+    const { category } = useParams();
 
     const categoryPosts = useSelector(state=>getAllByCategory(state, category));
 
     return (
     <Container>
-        <h1>Category: {category}</h1>
+        <h1>
+            Category: {category}
+        </h1>
         {categoryPosts.map(post => (
             <Post post={post} />
         ))}

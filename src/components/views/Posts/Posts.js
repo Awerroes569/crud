@@ -4,7 +4,6 @@ import { getAllPosts } from "../../../redux/postRedux";
 import Post from '../Post/Post';
 import shortid from 'shortid';
 
-
 const Posts = () => {
 
     const posts = useSelector(getAllPosts);
@@ -13,7 +12,12 @@ const Posts = () => {
         <Container>
             <Row>
                 {posts.map(post => (
-                    <Col xs="12" sm="6" md="4" key={shortid()}>
+                    <Col
+                        xs="12"
+                        sm="6"
+                        md="4"
+                        key={shortid()}
+                    >
                         <Post post={post} />
                     </Col>
                 ))}

@@ -1,11 +1,15 @@
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import styles from './Post.module.scss';
 import { NavLink } from 'react-router-dom';
-
 
 const Post = ({ post }) => {
     return (
-        <Container className="m-1 py-3 border rounded">
+        <Container
+            className="
+                m-1 py-3
+                border
+                rounded
+            "
+        >
             <Row>
                 <Col 
                     style={{ padding: 0, fontWeight: 'bold' }}
@@ -21,7 +25,10 @@ const Post = ({ post }) => {
             >
                 <Col 
                     xs="4"
-                    className="d-flex align-items-center"
+                    className="
+                        d-flex
+                        align-items-center
+                    "
                     style={{ textAlign: 'left', padding: 0}}
                 >
                     <p
@@ -32,7 +39,10 @@ const Post = ({ post }) => {
                 </Col>
                 <Col
                     xs="8"
-                    className="d-flex align-items-center"
+                    className="
+                        d-flex
+                        align-items-center
+                    "
                     style={{ textAlign: 'left' }}
                 >
                     <p
@@ -47,7 +57,10 @@ const Post = ({ post }) => {
             >
                 <Col
                     xs="4"
-                    className="d-flex align-items-center"
+                    className="
+                        d-flex
+                        align-items-center
+                    "
                     style={{ textAlign: 'left', padding: 0}}
                 >
                     <p
@@ -58,7 +71,10 @@ const Post = ({ post }) => {
                 </Col>
                 <Col
                     xs="8"
-                    className="d-flex align-items-center"
+                    className="
+                        d-flex
+                        align-items-center
+                    "
                     style={{ textAlign: 'left' }}
                 >
                     <p
@@ -73,7 +89,10 @@ const Post = ({ post }) => {
             >
                 <Col 
                     xs="4"
-                    className="d-flex align-items-center"
+                    className="
+                        d-flex
+                        align-items-center
+                    "
                     style={{ textAlign: 'left', padding: 0}}
                 >
                     <p
@@ -84,7 +103,10 @@ const Post = ({ post }) => {
                 </Col>
                 <Col
                     xs="8"
-                    className="d-flex align-items-center"
+                    className="
+                        d-flex
+                        align-items-center
+                    "
                     style={{ textAlign: 'left' }}
                 >
                     <p
